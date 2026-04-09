@@ -7,7 +7,48 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initScrollReveal();
   initCopyButtons();
+  initYearTabs();
 });
+
+/* ===================================================
+   Year Tabs (Timetable page)
+   =================================================== */
+function initYearTabs() {
+  const tabs = document.querySelectorAll('.year-tab');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const year = tab.getAttribute('data-year');
+
+      // Update active tab
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Show corresponding panel
+      document.querySelectorAll('.timetable-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      const targetPanel = document.getElementById('panel-' + year);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+
+        // Re-trigger reveal animation for the panel card
+        const card = targetPanel.querySelector('.card');
+        if (card) {
+          card.classList.remove('visible');
+          requestAnimationFrame(() => {
+            card.classList.add('reveal', 'visible');
+          });
+        }
+
+        // Smooth scroll to panel
+        targetPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+}
 
 /* ===================================================
    Accordion

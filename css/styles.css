@@ -1114,6 +1114,319 @@ h6 {
 }
 
 /* ===================================================
+   Bank Detail Cards
+   =================================================== */
+.bank-detail-card {
+  position: relative;
+}
+
+.bank-detail-card__icon {
+  width: 56px;
+  height: 56px;
+  background: var(--grad-btn);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-purple);
+}
+
+.bank-detail-card__logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--clr-surface-border);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.bank-detail-card__logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.bank-detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--clr-surface-border-light);
+}
+
+.bank-detail-row:last-child {
+  border-bottom: none;
+}
+
+.bank-detail-row__label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--clr-text-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bank-detail-row__value {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--clr-text-900);
+  font-family: var(--ff-heading);
+}
+
+.bank-detail-row__value--account {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.account-number {
+  font-family: 'Courier New', monospace;
+  font-size: var(--fs-xl);
+  letter-spacing: 0.1em;
+  color: var(--clr-primary-700);
+  background: var(--clr-bg-100);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--clr-surface-border);
+}
+
+/* ===================================================
+   Year Tabs (Timetable)
+   =================================================== */
+.year-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.year-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 1.25rem 1rem;
+  background: var(--clr-surface);
+  border: 2px solid var(--clr-surface-border-light);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--ff-heading);
+  text-decoration: none;
+}
+
+.year-tab:hover {
+  border-color: var(--clr-primary-400);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.year-tab.active {
+  background: var(--grad-btn);
+  border-color: transparent;
+  box-shadow: var(--shadow-purple);
+  transform: translateY(-3px);
+}
+
+.year-tab__year {
+  font-size: var(--fs-3xl);
+  font-weight: 800;
+  color: var(--clr-text-900);
+  transition: color var(--transition-fast);
+}
+
+.year-tab.active .year-tab__year {
+  color: #fff;
+}
+
+.year-tab__label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-text-500);
+  transition: color var(--transition-fast);
+}
+
+.year-tab.active .year-tab__label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===================================================
+   Timetable Panels
+   =================================================== */
+.timetable-panel {
+  display: none;
+}
+
+.timetable-panel.active {
+  display: block;
+}
+
+/* ===================================================
+   Zoom Badge
+   =================================================== */
+.zoom-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--clr-blue-50);
+  border: 1px solid #93c5fd;
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.15rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-blue-500);
+  margin-bottom: 1.5rem;
+}
+
+/* ===================================================
+   Timetable Rows
+   =================================================== */
+.timetable {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timetable__row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--clr-surface-border-light);
+  border-bottom: none;
+  transition: all var(--transition-fast);
+}
+
+.timetable__row:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.timetable__row:last-child {
+  border-bottom: 1px solid var(--clr-surface-border-light);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.timetable__row:hover {
+  background: var(--clr-bg-50);
+  border-color: var(--clr-primary-400);
+  z-index: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.timetable__day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 130px;
+  padding: 1rem;
+  background: var(--clr-bg-50);
+  border-right: 1px solid var(--clr-surface-border-light);
+}
+
+.timetable__day-name {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--clr-text-900);
+}
+
+.timetable__day-si {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-500);
+}
+
+.timetable__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  flex: 1;
+}
+
+.timetable__time {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--clr-text-900);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.timetable__type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.timetable__type--paper {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.timetable__type--live {
+  background: var(--clr-green-50);
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.timetable__type--repeat {
+  background: var(--clr-bg-100);
+  color: var(--clr-primary-700);
+  border: 1px solid var(--clr-surface-border);
+}
+
+.timetable__optional {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--clr-text-500);
+  margin-left: 0.3rem;
+}
+
+/* ===================================================
+   Coming Soon Placeholder
+   =================================================== */
+.coming-soon {
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.coming-soon__icon {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.coming-soon__title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--clr-text-900);
+  margin-bottom: 0.5rem;
+}
+
+.coming-soon__text {
+  color: var(--clr-text-500);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
+
+/* ===================================================
    Responsive
    =================================================== */
 @media (max-width: 768px) {
@@ -1152,6 +1465,36 @@ h6 {
 
   .contact-chips {
     flex-direction: column;
+  }
+
+  .timetable__row {
+    flex-direction: column;
+  }
+
+  .timetable__day {
+    min-width: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--clr-surface-border-light);
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .year-tabs {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .year-tab {
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .bank-detail-row__value--account {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }
 
