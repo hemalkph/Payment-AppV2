@@ -8,7 +8,71 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initCopyButtons();
   initYearTabs();
+  initYouTubePlayers();
+  initLocationTabs();
 });
+
+/* ===================================================
+   Location Tabs (Physical Timetable)
+   =================================================== */
+function initLocationTabs() {
+  const tabs = document.querySelectorAll('.location-tab');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const location = tab.getAttribute('data-location');
+
+      // Update active tab
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Show corresponding panel
+      document.querySelectorAll('.location-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      const targetPanel = document.getElementById('panel-' + location);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+
+        // Re-trigger reveal animation for cards
+        targetPanel.querySelectorAll('.card').forEach(card => {
+          card.classList.remove('visible');
+          requestAnimationFrame(() => {
+            card.classList.add('reveal', 'visible');
+          });
+        });
+
+        // Smooth scroll to panel
+        targetPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+}
+
+/* ===================================================
+   YouTube Player Overlay
+   =================================================== */
+function initYouTubePlayers() {
+  const playerConfigs = [
+    { wrapper: 'ytPlayerWrapper', thumbnail: 'ytThumbnail', iframe: 'ytIframeContainer', videoId: 'ASSriwLZ1oU' },
+    { wrapper: 'ytPlayerWrapperEn', thumbnail: 'ytThumbnailEn', iframe: 'ytIframeContainerEn', videoId: 'ASSriwLZ1oU' }
+  ];
+
+  playerConfigs.forEach(config => {
+    const thumbnail = document.getElementById(config.thumbnail);
+    const iframeContainer = document.getElementById(config.iframe);
+
+    if (!thumbnail || !iframeContainer) return;
+
+    thumbnail.addEventListener('click', () => {
+      thumbnail.style.display = 'none';
+      iframeContainer.style.display = 'block';
+      iframeContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${config.videoId}?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
+}
 
 /* ===================================================
    Year Tabs (Timetable page)

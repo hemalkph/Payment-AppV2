@@ -1427,6 +1427,334 @@ h6 {
 }
 
 /* ===================================================
+   Glassmorphism Cards
+   =================================================== */
+.glass-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-2xl);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow:
+    0 8px 32px rgba(147, 51, 234, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover::before {
+  left: 100%;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(147, 51, 234, 0.3);
+  box-shadow:
+    0 16px 48px rgba(147, 51, 234, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-card--highlight {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(147, 51, 234, 0.15);
+}
+
+.glass-card--dark {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(79, 70, 229, 0.03));
+}
+
+/* Glass Badge */
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(147, 51, 234, 0.15);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-primary-600);
+  margin-bottom: 1rem;
+}
+
+/* ===================================================
+   Social Links Grid
+   =================================================== */
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.social-link:hover::after {
+  opacity: 1;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.social-link--whatsapp {
+  background: linear-gradient(135deg, #25d366, #128C7E);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+}
+
+.social-link--whatsapp:hover {
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  color: #fff;
+}
+
+.social-link--telegram {
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(42, 171, 238, 0.25);
+}
+
+.social-link--telegram:hover {
+  box-shadow: 0 8px 25px rgba(42, 171, 238, 0.4);
+  color: #fff;
+}
+
+.social-link--youtube {
+  background: linear-gradient(135deg, #FF0000, #CC0000);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+}
+
+.social-link--youtube:hover {
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.35);
+  color: #fff;
+}
+
+.social-link--lms {
+  background: var(--grad-btn);
+  color: #fff;
+  box-shadow: var(--shadow-purple);
+}
+
+.social-link--lms:hover {
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
+  color: #fff;
+}
+
+/* ===================================================
+   Glow Pulse Animation
+   =================================================== */
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(147, 51, 234, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+  }
+}
+
+.glow-border {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ===================================================
+   Location Tabs (Physical Timetable)
+   =================================================== */
+.location-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.location-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--clr-surface);
+  border: 2px solid var(--clr-surface-border-light);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-text-700);
+  flex: 1;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.location-tab:hover {
+  border-color: var(--clr-primary-400);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.location-tab.active {
+  background: var(--grad-btn);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--shadow-purple);
+  transform: translateY(-2px);
+}
+
+.location-tab svg {
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   Location Panels
+   =================================================== */
+.location-panel {
+  display: none;
+}
+
+.location-panel.active {
+  display: block;
+}
+
+/* ===================================================
+   Physical Badge
+   =================================================== */
+.physical-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.15rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: #92400e;
+  margin-bottom: 1.5rem;
+}
+
+/* ===================================================
+   Map Embed
+   =================================================== */
+.map-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--clr-surface-border);
+  box-shadow: var(--shadow-md);
+}
+
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===================================================
+   Location Preview Grid (Hub page)
+   =================================================== */
+.location-preview-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.location-preview-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--clr-bg-50);
+  border: 1px solid var(--clr-surface-border-light);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.location-preview-item:hover {
+  border-color: var(--clr-primary-400);
+  box-shadow: var(--shadow-sm);
+}
+
+.location-preview-item strong {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-base);
+  color: var(--clr-text-900);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.location-preview-item p {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-500);
+  margin: 0;
+}
+
+.location-preview-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--clr-bg-100);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===================================================
    Responsive
    =================================================== */
 @media (max-width: 768px) {
@@ -1491,6 +1819,14 @@ h6 {
     padding: 1rem 1.25rem;
   }
 
+  .location-tabs {
+    flex-direction: column;
+  }
+
+  .location-tab {
+    min-width: auto;
+  }
+
   .bank-detail-row__value--account {
     flex-direction: column;
     align-items: flex-start;
@@ -1514,4 +1850,78 @@ h6 {
   .lang-card {
     padding: 2rem 1.5rem;
   }
+}
+
+/* ===================================================
+   YouTube Player Overlay
+   =================================================== */
+.yt-player-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+
+.yt-player-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.yt-player-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+  transition: filter var(--transition-base), transform var(--transition-base);
+}
+
+.yt-player-thumbnail:hover img {
+  filter: brightness(0.75);
+  transform: scale(1.03);
+}
+
+.yt-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.yt-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  filter: drop-shadow(0 4px 20px rgba(255, 0, 0, 0.5));
+}
+
+.yt-play-btn-bg {
+  transition: fill var(--transition-fast);
+}
+
+.yt-player-thumbnail:hover .yt-play-btn-bg {
+  fill: #cc0000;
+}
+
+.yt-player-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.yt-player-iframe iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
 }

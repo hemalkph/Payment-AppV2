@@ -124,6 +124,43 @@
         </div>
     </section>
 
+    <!-- YouTube Video Player Overlay -->
+    <section class="content-section">
+        <div class="container">
+            <div class="card reveal">
+                <div class="section-header">
+                    <span class="section-header__dot"></span>
+                    PAYMENT INSTRUCTIONS VIDEO
+                </div>
+                <p style="font-size:0.875rem; color:#4b5563; margin-bottom:1rem;">
+                    LMS එකට Payment කරන්න කලින් මෙම Video එක බලන්න
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                </p>
+                <div class="yt-player-wrapper" id="ytPlayerWrapper">
+                    <div class="yt-player-thumbnail" id="ytThumbnail">
+                        <img src="https://img.youtube.com/vi/ASSriwLZ1oU/maxresdefault.jpg"
+                            alt="Payment Instructions Video Thumbnail" loading="lazy">
+                        <button class="yt-play-btn" id="ytPlayBtn" aria-label="Play Video">
+                            <svg viewBox="0 0 68 48" width="68" height="48">
+                                <path class="yt-play-btn-bg"
+                                    d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
+                                    fill="#f00" />
+                                <path d="M45 24L27 14v20" fill="#fff" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="yt-player-iframe" id="ytIframeContainer" style="display:none;">
+                        <!-- iframe injected on play click -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION 2: Student Updates -->
     <section class="content-section">
         <div class="container">
@@ -142,14 +179,7 @@
                     </svg>
                 </p>
 
-                <a href="https://youtu.be/fWViFw2k_ic" target="_blank" class="video-link">
-                    <span class="play-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                        </svg>
-                    </span>
-                    <span>Payment Instructions Meeting Video එක බලන්න</span>
-                </a>
+
 
                 <div class="info-block" style="margin-top:1.25rem;">
                     <div class="info-block__title">
@@ -599,7 +629,7 @@
                         <li><a href="index.html">මුල් පිටුව</a></li>
                         <li><a href="en.html">English Medium</a></li>
                         <li><a href="payment-details.html">ගෙවීම් තොරතුරු</a></li>
-                        <li><a href="timetable.html">කාලසටහන</a></li>
+                        <li><a href="times.html">කාලසටහන</a></li>
                         <li><a href="https://pasinduathukorala.lk" target="_blank">LMS Website →</a></li>
                     </ul>
                 </div>
